@@ -1,7 +1,7 @@
 from app import app
 from flask import render_template, flash, redirect, url_for, request
 import datetime
-from app.res import add_film, edit_film
+from app.res import add_film, edit_film, upload_file
 from app.models import Film
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User
@@ -75,21 +75,14 @@ def admin():
     else:
         film = False
     if request.method == 'POST':
-        print(request.form)
         if not request.form:
-            print("ccccc")
             return redirect(url_for('admin'))
         if 'file' in request.files:
-            file = request.files['mainImage']
-            image = file.filename
+            image = upload_file(request)
         else:
-            print('no file')
-            image= request.form['mainImage']
-        if '2d' in request.form:
-            filmType = '2d'
-        else: filmType = '3d'
+            image = request.form['mainImage']
         film = {'id': request.form['filmId'],'name': request.form['filmName'], 'image': image, 'description': request.form['filmDescription'],
-                'type': filmType, 'trailer': request.form['filmTrailer']}
+                'type': "3D", 'trailer': request.form['filmTrailer']}
         edit_film(film)
         return redirect(url_for('admin'))
     galery = Film.query.all()
@@ -104,16 +97,11 @@ def add_new_film():
     film = {'name': '', 'image': '', 'description': '',
             'type': '', 'trailer': ''}
     if request.method == 'POST':
-        if 'file' in request.files:
-            file = request.files['mainImage']
-            image = file.filename
-        else:
-            print('no file')
-            image= request.form['mainImage']
-        if request.form['2d'] == 'on':
-            filmType = '2d'
+        image = upload_file(request)
         film = {'name': request.form['filmName'], 'image': image, 'description': request.form['filmDescription'],
-                'type': request.form['2d'], 'trailer': request.form['filmTrailer']}
+                'type': "3D", 'trailer': request.form['filmTrailer']}
         add_film(film)
+        upload_file(request)
         return redirect(url_for('admin'))
     return render_template('admin/pages/films.html', film=film, user=current_user)
+

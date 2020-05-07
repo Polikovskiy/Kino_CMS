@@ -15,7 +15,7 @@
                 <div class="row" style="padding: 0px">
                     {% for poster in galery %}
                         <div class="col-xl-2 col-md-3">
-                            <a style="padding: 0px" href="/index?film_name={{poster.name}}"><img src="{{poster.image}}"></a>
+                            <a style="padding: 0px" href="/index?film_name={{poster.name}}"><img width="160" height="250" src="{{ url_for('static', filename=poster.image) }}"></a>
                             <p style="text-align: center; font-size:12px">{{poster.name}}</p>
                         </div>
                     {% endfor %}
@@ -24,7 +24,7 @@
                 <div class="row">
                     {% for film in coming_soon_films %}
                         <div class="col-xl-2 col-md-3">
-                            <img src="{{film.image}}">
+                            <img width="160" height="250" src="{{ url_for('static', filename=film.image) }}"></a>
                             <p style="text-align: center; font-size:12px">{{film.name}}</p>
                         </div>
                     {% endfor %}

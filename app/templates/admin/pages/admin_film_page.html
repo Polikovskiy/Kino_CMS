@@ -1,5 +1,5 @@
 <!-- Horizontal Form -->
-              <form method="post" class="form-horizontal">
+              <form method="post" enctype=multipart/form-data class="form-horizontal">
                 <div class="card-body">
                   <div class="form-group row">
                     <label for="filmName" class="col-sm-2 col-form-label">Название фильма</label>
@@ -20,15 +20,15 @@
                   <div style="margin-top:50px" class="form-group row">
                     <label for="filmMainImage" class="col-sm-2 col-form-label">Главная картинка</label>
                     <div class="col-2">
-                      <img id="filmMainImage" style="height: 80px" src="{{film.image}}">
+                      <img id="filmMainImage" style="height: 80px" src="{{ url_for('static', filename=film.image) }}">
                     </div>
-                      <div  class="col-2">
-                      <input id="btnImage" style="margin-top:25px"  class="btn btn-block btn-success btn-xs" type="file">
+                      <div  class="col-1">
+                      <input id="btnImage" name="file" style="margin-top:25px"  class="btn btn-block btn-success btn-xs" type="file">
                     </div>
-                    <div style="margin-left:25px" class="col-2">
-                      <button style="margin-top:25px" type="button" class="btn btn-block btn-warning btn-xs">Remove</button>
+                    <div style="margin-left:25px" class="col-1">
+                      <button style="margin-top:25px" type="button" id="btnFileRemove" class="btn btn-block btn-warning btn-xs">Remove</button>
                     </div>
-                    <div style="margin-left:25px" class="col-2">
+                    <div style="margin-left:25px" class="col-4">
                       <input style="margin-top:20px" type="text" class="form-control" id="inputImage"  name="mainImage" value="{{film.image}}" placeholder="image url">
                     </div>
                   </div>

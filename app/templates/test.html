@@ -1,17 +1,45 @@
-<script>
+<!DOCTYPE html>
 
-cosole.log('script loaded');
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
 
-            var btnFile = document.getElementById("inputImage");
+        <div>
+            <input id="btnFile" type="file" accept="image/*" />
+        </div>
 
+        <div>
+            <img id="img" style="max-width: 100px" />
+        </div>
+
+        <div>
+            <input id="inputImage" type="text" value="oooooo" />
+        </div>
+
+        <div>
+            <button id="btnFileRemove">btnFileRemove</button>
+        </div>
+
+
+        <script>
+
+
+         console.log('script loaded');
+
+            var imageName = document.getElementById("inputImage").value;
+            var btnFile = document.getElementById("btnFile");
+            console.log(imageName)
             //Register event on file selected or changed.
             addEvents(btnFile, "change", function (event) {
                 if (event.target.files.length !== 0) {
-                    cosole.log('worked');
                     var file = event.target.files[0];
                     //Check if the file is IMAGE.
                     if (file.type.match("image.*")) {
-
+                        console.log(file.name);
                         var fl = new FileReader();
 
                         //Add event to read the content file.
@@ -22,9 +50,9 @@ cosole.log('script loaded');
 
                                 //CONVERT ARRAY BUFFER TO BASE64 STRING.
                                 var dataURL = evt.target.result;
-                                cosole.log(dataURL);
-                                document.getElementById("filmMainImage").src = dataURL;
 
+                                document.getElementById("img").src = dataURL;
+                                document.getElementById("inputImage").value = "images/films/" + file.name;
 
                             } catch (e) {
                                 alert(e);
@@ -42,6 +70,14 @@ cosole.log('script loaded');
                     }
                 }
 
+            });
+
+            var btnFileRemove = document.getElementById("btnFileRemove");
+
+            addEvents(btnFileRemove, "click", function (event) {
+                console.log(imageName)
+                //document.getElementById("img").src = imageName;
+                document.getElementById("inputImage").value = imageName
             });
 
             function addEvents(obj, evtName, func) {
@@ -75,3 +111,5 @@ cosole.log('script loaded');
             }
 
         </script>
+    </body>
+</html>
