@@ -1,0 +1,87 @@
+<!-- Horizontal Form -->
+              <form method="post" class="form-horizontal">
+                <div class="card-body">
+                  <div class="form-group row">
+                    <label for="filmName" class="col-sm-2 col-form-label">Название фильма</label>
+                    <div class="col-4">
+                      <input type="text" class="form-control" name="filmName" id="filmName" value="{{film.name}}" placeholder="film name">
+                    </div>
+                    <label for="filmId" class="col-sm-1 col-form-label">ID</label>
+                    <div class="col-2">
+                      <input type="text" class="form-control" name="filmId" id="filmId" value="{{film.id}}" readonly>
+                    </div>
+                  </div>
+                  <div style="margin-top:50px" class="form-group row">
+                    <label for="filmDescription" class="col-sm-2 col-form-label">Описание</label>
+                    <div class="col-sm-10">
+                      <textarea class="form-control" name="filmDescription" rows="3" id="filmDescription" placeholder="film description" spellcheck="false">{{film.description}}</textarea>
+                    </div>
+                  </div>
+                  <div style="margin-top:50px" class="form-group row">
+                    <label for="filmMainImage" class="col-sm-2 col-form-label">Главная картинка</label>
+                    <div class="col-2">
+                      <img id="filmMainImage" style="height: 80px" src="{{film.image}}">
+                    </div>
+                      <div  class="col-2">
+                      <input style="margin-top:25px"  class="btn btn-block btn-success btn-xs" type="file">
+                    </div>
+                    <div style="margin-left:25px" class="col-2">
+                      <button style="margin-top:25px" type="button" class="btn btn-block btn-warning btn-xs">Remove</button>
+                    </div>
+                    <div style="margin-left:25px" class="col-2">
+                      <input style="margin-top:20px" type="text" class="form-control"  name="mainImage" value="{{film.image}}" placeholder="image url">
+                    </div>
+                  </div>
+                  <div style="margin-top:50px" class="form-group row">
+                    <label for="filmGalery" class="col-sm-2 col-form-label">Галерея</label>
+                    <div id="filmGalery">
+                      <div class="col">
+                        <img style="height: 80px" src="logo.png">
+                        <button style="margin-top:5px" type="button" class="btn btn-block btn-success btn-xs">Save</button>
+                      </div>
+                      </div>
+                  </div>
+                  <div style="margin-top:50px" class="form-group row">
+                    <label for="filmTrailer" class="col-sm-2 col-form-label">Trailer link</label>
+                    <div class="col-10">
+                      <input type="text" name="filmTrailer" class="form-control" id="filmTrailer" value="{{film.trailer}}" placeholder="film.trailer">
+                    </div>
+                  </div>
+                  <div style="margin-top:50px" class="form-group row">
+                    <label for="filmType" class="col-sm-2 col-form-label">Film type</label>
+                    <div id="filmType"></div>
+                    <div class="offset-sm-2 col-1">
+                      <div class="form-check">
+                        <input type="checkbox" class="form-check-input" name="2d" id="2d">
+                        <label class="form-check-label" for="2d">2d</label>
+                      </div>
+                    </div>
+                    <div class="offset-sm-2 col-1">
+                      <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="3d">
+                        <label class="form-check-label" for="3d">3d</label>
+                      </div>
+                    </div>
+                    <div class="offset-sm-2 col-1">
+                      <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="imax">
+                        <label class="form-check-label" for="imax">imax</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="margin-top:50px" class="form-group row">
+                    <label for="ceoBlock" class="col-sm-2 col-form-label">CEO Block</label>
+                    <div class="col-8" id="ceoBlock">
+                      {% include 'admin/components/CEO_Block.html' %}
+                    </div>
+                  </div>
+                </div>
+                <!-- /.card-body -->
+                <div class="row justify-content-center">
+                        <div class="col-4 align-self-center">
+                            <button type="submit" class="btn btn-info">Save</button>
+                            <a href="{{url_for('admin')}}"><button style="margin-left:15px" type="button" class="btn btn-warning">Return</button></a>
+                        </div>
+                </div>
+                <!-- /.card-footer -->
+              </form>

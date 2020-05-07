@@ -1,0 +1,44 @@
+<div >
+    <div style="height:80px" class="row"></div>
+    <div class="row justify-content-center">
+       <div class="row align-self-center">
+          <iframe width="560" height="315" src="{{film.trailer}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+       </div>
+    </div>
+    <div style="margin-top:70px;" class="row">
+        <div class="col-4">
+           <p>Расписание сеансов кинотеатра:</p>
+        </div>
+        <div style="margin-left:30px;" class="col-2">
+            <div style="width:100px " class="btn-group">
+               <button style="background-color:white; color: black" class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">city</button>
+               <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <a class="dropdown-item" href="#">Action</a>
+                   <a class="dropdown-item" href="#">Another action</a>
+               </div>
+            </div>
+        </div>
+        <div style="border: 1px solid; margin-left:30px" class="col-1">All</div>
+        <div style="border: 1px solid; margin-left:30px" class="col-1">2D</div>
+        <div style="border: 1px solid; margin-left:30px" class="col-1">3D</div>
+    </div>
+    <div style="height:40px; margin-left:180px; margin-top:70px" class="row">
+        <div style="border: 1px solid; margin-left:30px" class="col-1">seans</div>
+        <div style="border: 1px solid; margin-left:30px" class="col-1">seans</div>
+        <div style="border: 1px solid; margin-left:30px" class="col-1">seans</div>
+        <div style="border: 1px solid; margin-left:30px" class="col-1">seans</div>
+        <div style="border: 1px solid; margin-left:30px" class="col-1">seans</div>
+        <div style="border: 1px solid; margin-left:30px" class="col-1">seans</div>
+    </div>
+    <div style="margin-left:60px; margin-top:70px" class="row">
+        <div class="col-4">
+            <img src="{{film.image}}">
+        </div>
+        <div class="col-7">
+            <button type="button" class="btn btn-success">Buy ticket</button>
+            <p>{{film.name}}"</p>
+            <p>{{film.description}}"</p>
+        </div>
+    </div>
+    <div style="height:80px" class="row"></div>
+</div>

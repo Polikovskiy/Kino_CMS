@@ -1,0 +1,37 @@
+<div>
+    <div style="margin-top:10px" class="row">
+        <div style="margin-top:20px" class="col-2">
+           <form class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            </form>
+        </div>
+        <div style="margin-left:60px" class="col-4">
+            <img height="40px" style="margin-top:20px ; margin-left:50px " src="{{ url_for('static', filename='images/Social-Media-Icons.jpg') }}">
+        </div>
+        <div class="col-2"></div>
+        <div style="margin-left: 15px" class="col-3">
+            <h3 style="color: #0000FF">(048)777-77-77</h3>
+            <h3 style="color: #0000FF">(097)777-77-77</h3>
+        </div>
+    </div>
+    <div  class="row">
+        <div class="col-9">
+            {% include 'home/components/nav_bar.html' %}
+        </div>
+        <div class="col-2">
+        </div>
+        <div class="col-1">
+            <div style="height: " class="btn-group">
+               <button style="background-color:white; color: black" class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  lang
+               </button>
+               <div class="dropdown-menu">
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                  </div>
+               </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+{% extends "admin/pages/admin.html" %}
+
+{% block films %}
+    {% if film %}
+        {% include 'admin/pages/admin_film_page.html' %}
+    {% else %}
+        <div>
+            <h2 style="text-align: center; height: 50px">Смотрите сегодня, {{today}}</h2>
+            <div class="row justify-content-center" style="margin-bottom: 40px">
+                <div class="col-6 align-self-center">
+                    <a href="/admin/film/new"><button type="button" class="btn btn-block btn-primary btn-lg">Add new Films</button></a>
+                </div>
+            </div>
+            <div class="row" style="margin-left: 0px">
+                {% for poster in galery %}
+                <div class="col-xl-2 col-md-3">
+                    <a href="/admin?film_name={{poster.name}}"><img src="{{poster.image}}"></a>
+                    <p style="text-align: center; font-size:12px">{{poster.name}}</p>
+                </div>
+                {% endfor %}
+            </div>
+            <h2 style="text-align: center">Смотрите скоро</h2>
+            <div class="row">
+                {% for film in coming_soon_films %}
+                <div class="col-xl-2 col-md-3">
+                    <img src="{{film.image}}">
+                    <p style="text-align: center; font-size:12px">{{film.name}}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,24 @@
+.tile{
+    padding: 20px
+    width:150px;
+    height:150px;
+    border-left: 20px
+}
+
+.col-md-4{
+    float:left;
+}
+
+#test {
+   background-image: url("https://images.immediate.co.uk/production/volatile/sites/3/2019/04/Avengers-Endgame-Banner-2-de7cf60.jpg?quality=90&resize=620,413");
+   height: 295px;
+   background-size: 100%;
+}
+
+body {
+   background-image: url("https://images.immediate.co.uk/production/volatile/sites/3/2019/04/Avengers-Endgame-Banner-2-de7cf60.jpg?quality=90&resize=1920,1080");
+}
+
+.carousel .item {
+  height: 250px;
+}

@@ -1,0 +1,35 @@
+{% extends "index.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block content %}
+    <div class="container">
+        <div id="navBar">
+            {% include 'home/components/main_header.html' %}
+        </div>
+        <div style="background-color: white" >
+            {% if film %}
+                {% include 'home/pages/film_profile.html' %}
+            {% else %}
+                {% include 'home/components/carousel.html' %}
+                <h2 style="text-align: center">Смотрите сегодня, {{today}}</h2>
+                <div class="row" style="padding: 0px">
+                    {% for poster in galery %}
+                        <div class="col-xl-2 col-md-3">
+                            <a style="padding: 0px" href="/index?film_name={{poster.name}}"><img src="{{poster.image}}"></a>
+                            <p style="text-align: center; font-size:12px">{{poster.name}}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+                <h2 style="text-align: center">Смотрите скоро</h2>
+                <div class="row">
+                    {% for film in coming_soon_films %}
+                        <div class="col-xl-2 col-md-3">
+                            <img src="{{film.image}}">
+                            <p style="text-align: center; font-size:12px">{{film.name}}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+         </div>
+    </div>
+{% endblock %}
