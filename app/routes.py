@@ -1,6 +1,5 @@
 from app import app
 from flask import render_template, flash, redirect, url_for, request
-from app.forms import LoginForm
 import datetime
 from app.res import add_film, edit_film
 from app.models import Film
