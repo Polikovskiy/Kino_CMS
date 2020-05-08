@@ -1,7 +1,7 @@
 from app import app
 from flask import render_template, flash, redirect, url_for, request
 import datetime
-from app.res import add_film, edit_film, upload_file
+from app.res import add_film, edit_film, upload_file, delete
 from app.models import Film
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User
@@ -112,3 +112,8 @@ def add_new_film():
         return redirect(url_for('admin'))
     return render_template('admin/pages/films.html', film=film, user=current_user)
 
+
+@app.route('/delete')
+def delete():
+    delete()
+    return redirect(url_for('index'))

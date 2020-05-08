@@ -46,3 +46,8 @@ def upload_file(request):
             filename = secure_filename(file.filename)
             file.save(os.path.join('app/static/images/film_images/', filename))
             return os.path.join('images/film_images/', filename)
+
+
+def delete():
+    galery = Film.query.all().delete()
+    db.session.commit()
