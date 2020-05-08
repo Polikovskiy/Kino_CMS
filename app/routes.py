@@ -61,6 +61,10 @@ def register():
 def not_found_error(error):
     return render_template('404.html'), 404
 
+@app.errorhandler(400)
+def not_found_error(error):
+    return render_template('404.html'), 400
+
 @app.errorhandler(500)
 def internal_error(error):
     #db.session.rollback()
@@ -77,12 +81,12 @@ def admin():
     if request.method == 'POST':
         if not request.form:
             return redirect(url_for('admin'))
-        if 'file' in request.files:
+        if 'file' in request.files and request.files['file'].filename != '':
             image = upload_file(request)
         else:
-            image = request.form['mainImage']
+            image = request.form['imageURL']
         film = {'id': request.form['filmId'],'name': request.form['filmName'], 'image': image, 'description': request.form['filmDescription'],
-                'type': "3D", 'trailer': request.form['filmTrailer']}
+                'type': "3D", 'trailer': request.form['filmTrailer'], 'remouteImage': request.form['mainImage']}
         edit_film(film)
         return redirect(url_for('admin'))
     galery = Film.query.all()
@@ -95,11 +99,14 @@ def admin():
 @login_required
 def add_new_film():
     film = {'name': '', 'image': '', 'description': '',
-            'type': '', 'trailer': ''}
+            'type': '', 'trailer': '', 'remouteImage': ''}
     if request.method == 'POST':
-        image = upload_file(request)
+        if 'file' in request.files and request.files['file'].filename != '':
+            image = upload_file(request)
+        else:
+            image = request.form['imageURL']
         film = {'name': request.form['filmName'], 'image': image, 'description': request.form['filmDescription'],
-                'type': "3D", 'trailer': request.form['filmTrailer']}
+                'type': "3D", 'trailer': request.form['filmTrailer'], 'remouteImage': request.form['mainImage']}
         add_film(film)
         upload_file(request)
         return redirect(url_for('admin'))

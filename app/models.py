@@ -11,6 +11,7 @@ class Film(db.Model):
     description = db.Column(db.String(10000))
     type = db.Column(db.String(64))
     trailer = db.Column(db.String(500))
+    remouteImage = db.Column(db.String(500), default="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQiDCZriEjU3nqpBGIrkJrb2trlvG-vsBYqJFwZm-c-mS3Ka07N&usqp=CAU")
 
 
 class Galery(db.Model):
